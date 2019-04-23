@@ -2,6 +2,8 @@
 
 :tada: Thank you for considering a contribution to the Paver project!
 
+You don't have to be an [AirTank][1] team member to contribute. We welcome outside contributors. But there are a few guidelines.
+
 The following is a set of guidelines for contributing to Paver. You can find paver in the [Airtank Organization](https://github.com/AirtankNH/paver) on GitHub.
 
 Feel free to propose changes to this document in a pull request.
@@ -56,7 +58,7 @@ Unsure where to begin contributing to Atom? You can start by looking through the
 
 #### Local development
 
-Todo: See [issue #2][issue-4]
+Todo: See [issue #4][issue-4]
 
 ### Pull Requests
 
@@ -88,6 +90,7 @@ That last one is subjective. When it doubt ask for guidance in an issue.
 
 All JavaScript must adhere to [JavaScript Standard Style](https://standardjs.com/).
 
+[1]:https://www.airtank.com/
 [first]:https://github.com/AirtankNH/paver/issues?q=is%3Aopen+label%3A%22good+first+issue%22+sort%3Acomments-desc
 [help-wanted]:https://github.com/AirtankNH/paver/issues?q=is%3Aopen+label%3A%22help-wanted%22+sort%3Acomments-desc
 [issue-2]:https://github.com/AirtankNH/paver/issues/2
