@@ -4,7 +4,7 @@ class AwsIntegration {
     this.Org = new AWS.Organizations()
     this.Iam = new AWS.IAM()
   }
-// Organizations
+  // Organizations
   checkIfAccountExists (accountName) {
     return this.Org.listAccounts().promise()
       .then(accountList => {
@@ -21,7 +21,7 @@ class AwsIntegration {
   createDevEnv (email, firstName, lastName) {
     var params = {
       AccountName: `${firstName}_${lastName}_development`,
-      Email: email,
+      Email: email
     }
 
     return this.checkIfAccountExists(params.AccountName)
