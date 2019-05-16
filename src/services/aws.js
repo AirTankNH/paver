@@ -18,9 +18,9 @@ class AwsIntegration {
       })
   }
 
-  // checkIfAccountIsReady () {
-  //   return this.Org.
-  // }
+  checkIfAccountIsReady () {
+    return this.Org.
+  }
 
   createNewAccount (email, firstName, lastName) {
     var params = {
