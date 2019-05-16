@@ -1,12 +1,29 @@
-const AWS = require('aws-sdk')
-const AwsIntegration = require('./integrations/aws')
+const yargs = require('yargs')
 
-var credentials = new AWS.SharedIniFileCredentials({ profile: 'orgs' })
+var argv = yargs
+  .usage('Usage: $0 --service=[aws] --command=[command]')
+  .option('service', {
+    type: 'string',
+    default: 'aws',
+    description: 'Which service to use.'
+  })
+  .option('command', {
+    type: 'string',
+    description: 'Which command to use.'
+  })
+  .option('profile', {
+    type: 'string',
+    description: 'Which aws profile to use.'
+  })
+  .argv
+
+const AWS = require('aws-sdk')
+var credentials = new AWS.SharedIniFileCredentials({ profile: argv.profile })
 AWS.config.credentials = credentials
 AWS.config.update({ region: 'us-east-1' })
 
-const awsIntegration = new AwsIntegration(AWS)
+const Service = require('./services/' + argv.service)
 
-awsIntegration.createDevEnv('paul+test3@airtank.com', 'Testy', 'McTesterson')
+const svc = new Service(AWS)
 
-// awsIntegration.checkIfAccountExists('Testy_McTesterson_development')
+svc.createNewAccount('rgrehan+devenv@airtank.com', 'rick', 'grehan')

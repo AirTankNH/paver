@@ -18,7 +18,11 @@ class AwsIntegration {
       })
   }
 
-  createDevEnv (email, firstName, lastName) {
+  // checkIfAccountIsReady () {
+  //   return this.Org.
+  // }
+
+  createNewAccount (email, firstName, lastName) {
     var params = {
       AccountName: `${firstName}_${lastName}_development`,
       Email: email
@@ -41,9 +45,9 @@ class AwsIntegration {
   }
   // IAM Stuff
 
-  addAdminIamUser () {
+  // addAdminIamUser (accountNumber) {
 
-  }
+  // }
 }
 
 module.exports = AwsIntegration

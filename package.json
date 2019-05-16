@@ -12,5 +12,8 @@
   },
   "scripts": {
     "test": "standard"
+  },
+  "dependencies": {
+    "yargs": "^13.2.4"
   }
 }
