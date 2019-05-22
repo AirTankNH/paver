@@ -26,4 +26,5 @@ const Service = require('./services/' + argv.service)
 
 const svc = new Service(AWS)
 
-svc.createNewAccount('rgrehan+devenv@airtank.com', 'rick', 'grehan')
+svc[argv.command](argv.manifest)
+

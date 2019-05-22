@@ -4,6 +4,17 @@ class AwsIntegration {
     this.Org = new AWS.Organizations()
     this.Iam = new AWS.IAM()
   }
+
+  // Cloudformation
+
+  // createStack
+
+  // updateStack
+
+  // checkStackExists
+
+  // getStackStatus
+
   // Organizations
   checkIfAccountExists (accountName) {
     return this.Org.listAccounts().promise()
@@ -18,8 +29,18 @@ class AwsIntegration {
       })
   }
 
-  checkIfAccountIsReady () {
-    return this.Org.
+  checkIfAccountIsReady (requestId) {
+    var params = {
+      CreateAccountRequestId: requestId
+    }
+    return this.Org.describeCreateAccountStatus(params).promise()
+      .then(response => {
+        if (response.State === 'SUCCEEDED') {
+          return true
+        } else {
+          return false
+        }
+      })
   }
 
   createNewAccount (email, firstName, lastName) {
@@ -43,11 +64,38 @@ class AwsIntegration {
         }
       })
   }
-  // IAM Stuff
 
-  // addAdminIamUser (accountNumber) {
+  // IAM
 
-  // }
+  createAdminIamGroupAndUser (userName, accountID) {
+
+    // createAdminGroup
+    return this.Iam.createGroup({GroupName: 'Administrators'}).promise()
+      .then(createGroupResponse => {
+        var policyAttachParams = {
+          GroupName: createGroupResponse.Group.GroupName,
+          PolicyArn: 'arn:aws:iam::aws:policy/AdministratorAccess'
+        }
+        return this.Iam.attachGroupPolicy(policyAttachParams).promise()
+          .then( () => {
+            return this.Iam.createUser(userName) {
+            }
+          })
+            .then( () => {
+              var groupAttachParams = {
+                GroupName: createGroupResponse.Group.GroupName,
+                UserName: userName
+              }
+              return this.Iam.addUserToGroup(groupAttachParams).promise()
+                .then( () => {
+// access keys
+                })
+            })
+      })
+
+    
+
+  }
 }
 
 module.exports = AwsIntegration
